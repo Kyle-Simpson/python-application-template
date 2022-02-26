@@ -1,0 +1,58 @@
+[tool.poetry]
+name = "{{package_name}}"
+version = "0.0.1"
+description = "{{description}}"
+authors = ["{{author}} <{{author_email}}>"]
+repository = "{{url}}"
+homepage = "{{homepage}}"
+
+[tool.poetry.scripts]
+{{package_name}}_console = "{{package_name}}.cli.console:main"
+
+[[tool.poetry.source]]
+name = "artifactory"
+url = "artifactory_url_here"
+
+[tool.poetry.dependencies]
+click = "^7.0"
+importlib-metadata = {version = "^1.6.0", python="<3.8"}
+python = "~3.9.1"
+python-dateutil = "^2.8.1"
+
+[tool.poetry.dev-dependencies]
+black = "^19.10b0"
+coverage = {extras = ["toml"], version = "^5.0.3"}
+flake8 = "^3.7.9"
+flake8-annotations = "^2.0.0"
+flake8-bandit = "^2.1.2"
+flake8-docstrings = "^1.5.0"
+flake8-isort = "^4"
+isort = "^5"
+pytest = "^5.2"
+pytest-cov = "^2.8.1"
+pytype = "^2020.2"
+safety = "^1.9.0"
+sphinx = "^3.0.4"
+sphinx-autodoc-typehints = "^1.10.3"
+sphinx-rtd-theme = "^0.5.0"
+testfixtures = "^6.14.0"
+xdoctest = "^0.11.0"
+
+[tool.coverage.paths]
+source = ["{{package_name}}", "*/site-packages"]
+
+[tool.coverage.report]
+omit = []
+show_missing = true
+fail_under = 80
+
+[tool.coverage.run]
+branch = true
+source = ["{{package_name}}"]
+
+[tool.black]
+line_length = 95
+
+[build-system]
+requires = ["poetry>=0.12"]
+build-backend = "poetry.masonry.api"
